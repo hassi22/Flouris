@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+build/
+
+# Electron
+release/
+
+# Environment
+.env*
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# SQLite WAL/SHM files
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+
+# Local accounting data and reports
+*.accdb
+*.pdf
+*.rar
+/bs_output.txt
+/check_*.py
+/diagnose_bs.*
+/find_missing.py
+
+# Access database lock files
+*.laccdb
+*.ldb

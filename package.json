@@ -1,0 +1,26 @@
+{
+  "name": "era-accounting",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ERA Accounting & Ledger Application",
+  "workspaces": [
+    "packages/*",
+    "apps/desktop"
+  ],
+  "scripts": {
+    "desktop": "npm run dev --workspace=apps/desktop",
+    "desktop:build": "npm run build --workspace=apps/desktop",
+    "mobile": "npm run start --prefix apps/mobile/MyApp",
+    "mobile:android": "npm run android --prefix apps/mobile/MyApp",
+    "mobile:ios": "npm run ios --prefix apps/mobile/MyApp",
+    "test": "npm run test --workspace=packages/common",
+    "test:mobile": "node --test apps/mobile/src/accounting/engine.test.js"
+  },
+  "allowScripts": {
+    "electron@31.7.7": true,
+    "fsevents@2.3.3": true
+  },
+  "devDependencies": {
+    "electron-builder": "^26.15.3"
+  }
+}

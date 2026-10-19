@@ -1,0 +1,9 @@
+node_modules/
+.expo/
+dist/
+build/
+*.jks
+*.keystore
+keystore.properties
+.env
+.env.local

@@ -1,0 +1,12 @@
+{
+  "name": "@era/common",
+  "version": "1.0.0",
+  "description": "Shared accounting engine for ERA",
+  "main": "accountingEngine.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

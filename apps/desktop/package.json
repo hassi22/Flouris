@@ -1,0 +1,57 @@
+{
+  "name": "flouris-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Flouris — Flour Mill ERP & Accounting",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:electron\"",
+    "dev:renderer": "npm run dev --prefix renderer",
+    "dev:electron": "wait-on http://localhost:5173 && electron .",
+    "build:renderer": "npm run build --prefix renderer",
+    "build": "npm run build:renderer && electron-builder",
+    "build:win": "npm run build:renderer && electron-builder --win nsis --x64",
+    "build:win:portable": "npm run build:renderer && electron-builder --win portable --x64",
+    "start": "electron .",
+    "fix-electron": "bash scripts/fix-electron.sh",
+    "postinstall": "electron-rebuild -f -w better-sqlite3 && bash scripts/fix-electron.sh"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "chokidar": "^3.6.0",
+    "mdb-reader": "^2.2.5"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.7.1",
+    "concurrently": "^9.0.0",
+    "electron": "31.7.7",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.flouris.erp",
+    "productName": "Flouris",
+    "asar": true,
+    "asarUnpack": ["node_modules/better-sqlite3/**"],
+    "icon": "assets/icon",
+    "directories": { "output": "release" },
+    "files": ["main.js", "preload.js", "driveSync.js", "erpHandlers.js", "assets/**", "renderer/dist/**/*"],
+    "extraResources": [],
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
+      "category": "public.app-category.finance",
+      "icon": "assets/icon.icns"
+    },
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "Flouris-Portable-${version}.exe"
+    }
+  }
+}
